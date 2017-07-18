@@ -9,7 +9,10 @@
 import Foundation
 
 class Player {
-    var money = 1000
+    var money : Double = 0
+    var fuel : Double = 10
+    var health : Double = 5
+    var healthUpgrade : Double = 1
     
 
 }

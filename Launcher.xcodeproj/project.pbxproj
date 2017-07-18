@@ -19,9 +19,12 @@
 		0467802B1F13DF5F00AC00D9 /* LauncherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0467802A1F13DF5F00AC00D9 /* LauncherUITests.swift */; };
 		0467803B1F14327C00AC00D9 /* Animation.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0467803A1F14327C00AC00D9 /* Animation.sks */; };
 		0467803D1F15371300AC00D9 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0467803C1F15371300AC00D9 /* MSButtonNode.swift */; };
+		0467DAA41F16C9970068A3C4 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0467DAA31F16C9970068A3C4 /* CGFloat+Extensions.swift */; };
 		047BFC381F1593A2001DFF04 /* UpgradeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 047BFC371F1593A2001DFF04 /* UpgradeScene.sks */; };
 		047BFC3A1F1593CB001DFF04 /* UpgradeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047BFC391F1593CB001DFF04 /* UpgradeScene.swift */; };
 		047BFC3C1F168C41001DFF04 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047BFC3B1F168C41001DFF04 /* Player.swift */; };
+		0489E1971F1D6EA8001B0410 /* Indicator.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0489E1961F1D6EA8001B0410 /* Indicator.sks */; };
+		04DCD7CB1F1D1D8700CA4809 /* Rocket.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04DCD7CA1F1D1D8700CA4809 /* Rocket.sks */; };
 		04F594451F16C11B00BB6FDE /* Chocolate.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04F594441F16C11B00BB6FDE /* Chocolate.sks */; };
 /* End PBXBuildFile section */
 
@@ -61,9 +64,12 @@
 		0467802C1F13DF5F00AC00D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0467803A1F14327C00AC00D9 /* Animation.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Animation.sks; sourceTree = "<group>"; };
 		0467803C1F15371300AC00D9 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
+		0467DAA31F16C9970068A3C4 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		047BFC371F1593A2001DFF04 /* UpgradeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = UpgradeScene.sks; sourceTree = "<group>"; };
 		047BFC391F1593CB001DFF04 /* UpgradeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeScene.swift; sourceTree = "<group>"; };
 		047BFC3B1F168C41001DFF04 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		0489E1961F1D6EA8001B0410 /* Indicator.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Indicator.sks; sourceTree = "<group>"; };
+		04DCD7CA1F1D1D8700CA4809 /* Rocket.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rocket.sks; sourceTree = "<group>"; };
 		04F594441F16C11B00BB6FDE /* Chocolate.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Chocolate.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,8 +125,11 @@
 				046780061F13DF5F00AC00D9 /* GameScene.sks */,
 				0467803A1F14327C00AC00D9 /* Animation.sks */,
 				046780081F13DF5F00AC00D9 /* Actions.sks */,
+				0489E1961F1D6EA8001B0410 /* Indicator.sks */,
 				04F594441F16C11B00BB6FDE /* Chocolate.sks */,
 				0467803C1F15371300AC00D9 /* MSButtonNode.swift */,
+				04DCD7CA1F1D1D8700CA4809 /* Rocket.sks */,
+				0467DAA31F16C9970068A3C4 /* CGFloat+Extensions.swift */,
 				047BFC371F1593A2001DFF04 /* UpgradeScene.sks */,
 				0467800A1F13DF5F00AC00D9 /* GameScene.swift */,
 				047BFC391F1593CB001DFF04 /* UpgradeScene.swift */,
@@ -263,9 +272,11 @@
 				046780101F13DF5F00AC00D9 /* Main.storyboard in Resources */,
 				046780071F13DF5F00AC00D9 /* GameScene.sks in Resources */,
 				047BFC381F1593A2001DFF04 /* UpgradeScene.sks in Resources */,
+				04DCD7CB1F1D1D8700CA4809 /* Rocket.sks in Resources */,
 				0467803B1F14327C00AC00D9 /* Animation.sks in Resources */,
 				046780121F13DF5F00AC00D9 /* Assets.xcassets in Resources */,
 				046780151F13DF5F00AC00D9 /* LaunchScreen.storyboard in Resources */,
+				0489E1971F1D6EA8001B0410 /* Indicator.sks in Resources */,
 				04F594451F16C11B00BB6FDE /* Chocolate.sks in Resources */,
 				046780091F13DF5F00AC00D9 /* Actions.sks in Resources */,
 			);
@@ -294,6 +305,7 @@
 			files = (
 				0467800B1F13DF5F00AC00D9 /* GameScene.swift in Sources */,
 				0467800D1F13DF5F00AC00D9 /* GameViewController.swift in Sources */,
+				0467DAA41F16C9970068A3C4 /* CGFloat+Extensions.swift in Sources */,
 				046780051F13DF5F00AC00D9 /* AppDelegate.swift in Sources */,
 				047BFC3A1F1593CB001DFF04 /* UpgradeScene.swift in Sources */,
 				047BFC3C1F168C41001DFF04 /* Player.swift in Sources */,
