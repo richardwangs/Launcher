@@ -24,6 +24,9 @@
 		047BFC3A1F1593CB001DFF04 /* UpgradeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047BFC391F1593CB001DFF04 /* UpgradeScene.swift */; };
 		047BFC3C1F168C41001DFF04 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047BFC3B1F168C41001DFF04 /* Player.swift */; };
 		0489E1971F1D6EA8001B0410 /* Indicator.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0489E1961F1D6EA8001B0410 /* Indicator.sks */; };
+		048FE5BF1F33A82200BA0E9D /* AnimationAction.sks in Resources */ = {isa = PBXBuildFile; fileRef = 048FE5BE1F33A82200BA0E9D /* AnimationAction.sks */; };
+		04C5B9F71F2AA70A0063CF60 /* coins.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04C5B9F61F2AA70A0063CF60 /* coins.sks */; };
+		04C5B9F91F2B9F890063CF60 /* Dragon.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04C5B9F81F2B9F890063CF60 /* Dragon.sks */; };
 		04DCD7CB1F1D1D8700CA4809 /* Rocket.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04DCD7CA1F1D1D8700CA4809 /* Rocket.sks */; };
 		04F594451F16C11B00BB6FDE /* Chocolate.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04F594441F16C11B00BB6FDE /* Chocolate.sks */; };
 /* End PBXBuildFile section */
@@ -69,6 +72,9 @@
 		047BFC391F1593CB001DFF04 /* UpgradeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeScene.swift; sourceTree = "<group>"; };
 		047BFC3B1F168C41001DFF04 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0489E1961F1D6EA8001B0410 /* Indicator.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Indicator.sks; sourceTree = "<group>"; };
+		048FE5BE1F33A82200BA0E9D /* AnimationAction.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AnimationAction.sks; sourceTree = "<group>"; };
+		04C5B9F61F2AA70A0063CF60 /* coins.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = coins.sks; sourceTree = "<group>"; };
+		04C5B9F81F2B9F890063CF60 /* Dragon.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Dragon.sks; sourceTree = "<group>"; };
 		04DCD7CA1F1D1D8700CA4809 /* Rocket.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rocket.sks; sourceTree = "<group>"; };
 		04F594441F16C11B00BB6FDE /* Chocolate.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Chocolate.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,14 +130,17 @@
 				046780041F13DF5F00AC00D9 /* AppDelegate.swift */,
 				046780061F13DF5F00AC00D9 /* GameScene.sks */,
 				0467803A1F14327C00AC00D9 /* Animation.sks */,
+				048FE5BE1F33A82200BA0E9D /* AnimationAction.sks */,
 				046780081F13DF5F00AC00D9 /* Actions.sks */,
 				0489E1961F1D6EA8001B0410 /* Indicator.sks */,
 				04F594441F16C11B00BB6FDE /* Chocolate.sks */,
+				04C5B9F61F2AA70A0063CF60 /* coins.sks */,
+				04C5B9F81F2B9F890063CF60 /* Dragon.sks */,
 				0467803C1F15371300AC00D9 /* MSButtonNode.swift */,
 				04DCD7CA1F1D1D8700CA4809 /* Rocket.sks */,
 				0467DAA31F16C9970068A3C4 /* CGFloat+Extensions.swift */,
-				047BFC371F1593A2001DFF04 /* UpgradeScene.sks */,
 				0467800A1F13DF5F00AC00D9 /* GameScene.swift */,
+				047BFC371F1593A2001DFF04 /* UpgradeScene.sks */,
 				047BFC391F1593CB001DFF04 /* UpgradeScene.swift */,
 				047BFC3B1F168C41001DFF04 /* Player.swift */,
 				0467800C1F13DF5F00AC00D9 /* GameViewController.swift */,
@@ -273,9 +282,12 @@
 				046780071F13DF5F00AC00D9 /* GameScene.sks in Resources */,
 				047BFC381F1593A2001DFF04 /* UpgradeScene.sks in Resources */,
 				04DCD7CB1F1D1D8700CA4809 /* Rocket.sks in Resources */,
+				04C5B9F71F2AA70A0063CF60 /* coins.sks in Resources */,
 				0467803B1F14327C00AC00D9 /* Animation.sks in Resources */,
 				046780121F13DF5F00AC00D9 /* Assets.xcassets in Resources */,
 				046780151F13DF5F00AC00D9 /* LaunchScreen.storyboard in Resources */,
+				04C5B9F91F2B9F890063CF60 /* Dragon.sks in Resources */,
+				048FE5BF1F33A82200BA0E9D /* AnimationAction.sks in Resources */,
 				0489E1971F1D6EA8001B0410 /* Indicator.sks in Resources */,
 				04F594451F16C11B00BB6FDE /* Chocolate.sks in Resources */,
 				046780091F13DF5F00AC00D9 /* Actions.sks in Resources */,
