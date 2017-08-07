@@ -25,8 +25,11 @@
 		047BFC3C1F168C41001DFF04 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047BFC3B1F168C41001DFF04 /* Player.swift */; };
 		0489E1971F1D6EA8001B0410 /* Indicator.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0489E1961F1D6EA8001B0410 /* Indicator.sks */; };
 		048FE5BF1F33A82200BA0E9D /* AnimationAction.sks in Resources */ = {isa = PBXBuildFile; fileRef = 048FE5BE1F33A82200BA0E9D /* AnimationAction.sks */; };
+		048FE5C11F34DDCB00BA0E9D /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 048FE5C01F34DDCB00BA0E9D /* MainMenu.sks */; };
 		04C5B9F71F2AA70A0063CF60 /* coins.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04C5B9F61F2AA70A0063CF60 /* coins.sks */; };
 		04C5B9F91F2B9F890063CF60 /* Dragon.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04C5B9F81F2B9F890063CF60 /* Dragon.sks */; };
+		04D457D51F38CE8A0003B1AD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D457D31F38CE8A0003B1AD /* Fabric.framework */; };
+		04D457D61F38CE8A0003B1AD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D457D41F38CE8A0003B1AD /* Crashlytics.framework */; };
 		04DCD7CB1F1D1D8700CA4809 /* Rocket.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04DCD7CA1F1D1D8700CA4809 /* Rocket.sks */; };
 		04F594451F16C11B00BB6FDE /* Chocolate.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04F594441F16C11B00BB6FDE /* Chocolate.sks */; };
 /* End PBXBuildFile section */
@@ -73,8 +76,11 @@
 		047BFC3B1F168C41001DFF04 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0489E1961F1D6EA8001B0410 /* Indicator.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Indicator.sks; sourceTree = "<group>"; };
 		048FE5BE1F33A82200BA0E9D /* AnimationAction.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AnimationAction.sks; sourceTree = "<group>"; };
+		048FE5C01F34DDCB00BA0E9D /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		04C5B9F61F2AA70A0063CF60 /* coins.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = coins.sks; sourceTree = "<group>"; };
 		04C5B9F81F2B9F890063CF60 /* Dragon.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Dragon.sks; sourceTree = "<group>"; };
+		04D457D31F38CE8A0003B1AD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		04D457D41F38CE8A0003B1AD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		04DCD7CA1F1D1D8700CA4809 /* Rocket.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rocket.sks; sourceTree = "<group>"; };
 		04F594441F16C11B00BB6FDE /* Chocolate.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Chocolate.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D457D61F38CE8A0003B1AD /* Crashlytics.framework in Frameworks */,
+				04D457D51F38CE8A0003B1AD /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +115,8 @@
 		04677FF81F13DF5E00AC00D9 = {
 			isa = PBXGroup;
 			children = (
+				04D457D31F38CE8A0003B1AD /* Fabric.framework */,
+				04D457D41F38CE8A0003B1AD /* Crashlytics.framework */,
 				046780031F13DF5F00AC00D9 /* Launcher */,
 				0467801E1F13DF5F00AC00D9 /* LauncherTests */,
 				046780291F13DF5F00AC00D9 /* LauncherUITests */,
@@ -142,6 +152,7 @@
 				0467800A1F13DF5F00AC00D9 /* GameScene.swift */,
 				047BFC371F1593A2001DFF04 /* UpgradeScene.sks */,
 				047BFC391F1593CB001DFF04 /* UpgradeScene.swift */,
+				048FE5C01F34DDCB00BA0E9D /* MainMenu.sks */,
 				047BFC3B1F168C41001DFF04 /* Player.swift */,
 				0467800C1F13DF5F00AC00D9 /* GameViewController.swift */,
 				0467800E1F13DF5F00AC00D9 /* Main.storyboard */,
@@ -180,6 +191,7 @@
 				04677FFD1F13DF5F00AC00D9 /* Sources */,
 				04677FFE1F13DF5F00AC00D9 /* Frameworks */,
 				04677FFF1F13DF5F00AC00D9 /* Resources */,
+				048FE5C21F38CD4A00BA0E9D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -283,6 +295,7 @@
 				047BFC381F1593A2001DFF04 /* UpgradeScene.sks in Resources */,
 				04DCD7CB1F1D1D8700CA4809 /* Rocket.sks in Resources */,
 				04C5B9F71F2AA70A0063CF60 /* coins.sks in Resources */,
+				048FE5C11F34DDCB00BA0E9D /* MainMenu.sks in Resources */,
 				0467803B1F14327C00AC00D9 /* Animation.sks in Resources */,
 				046780121F13DF5F00AC00D9 /* Assets.xcassets in Resources */,
 				046780151F13DF5F00AC00D9 /* LaunchScreen.storyboard in Resources */,
@@ -309,6 +322,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		048FE5C21F38CD4A00BA0E9D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run e866d7090b3558780b29df9a46c9eae1e41f91a0 4ae26b9436fd01ca2b54dc610db232101a2da17c5b1aa8dfe3c6d1cf99d7b52a";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		04677FFD1F13DF5F00AC00D9 /* Sources */ = {
@@ -476,6 +505,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ER46X9RFRU;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Launcher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bob.Launcher;
@@ -489,6 +522,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ER46X9RFRU;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Launcher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bob.Launcher;

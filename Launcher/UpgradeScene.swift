@@ -14,24 +14,25 @@ class UpgradeScene: SKScene {
     var backButton : MSButtonNode!
     var healthButton : MSButtonNode!
     var fazeButton : MSButtonNode!
-    var shrinkButton : MSButtonNode!
     var freezeButton : MSButtonNode!
-    var healthLabel : SKLabelNode!
+    var buttonBuy : MSButtonNode!
+    var costsLabel : SKLabelNode!
+    var buying : String = " "
     var playerMoney = player.money{
         didSet {
             labelMoney.text = String(Int(player.money))
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: player)
             UserDefaults.standard.set(encodedData, forKey: "players")
-            print("hello")
+            print("hellggho")
             print(player.money)
             print(player.fazeUpgrade)
             print(player.freezeUpgrade)
         }
         
     }
-    var healthCosts = 50.0 * player.healthUpgrade {
+    var costs = 0.0 {
         didSet {
-            healthLabel.text = String(healthCosts)
+            costsLabel.text = String(costs)
         }
     }
     
@@ -43,12 +44,11 @@ class UpgradeScene: SKScene {
         backButton = childNode(withName: "buttonBack") as! MSButtonNode
         healthButton = childNode(withName: "healthButton") as! MSButtonNode
         fazeButton = childNode(withName: "fazeButton") as! MSButtonNode
-        shrinkButton = childNode(withName: "shrinkButton") as! MSButtonNode
         freezeButton = childNode(withName: "freezeButton") as! MSButtonNode
-        healthLabel = childNode(withName: "healthLabel") as! SKLabelNode
+        buttonBuy = childNode(withName: "buttonBuy") as! MSButtonNode
+        costsLabel = childNode(withName: "costsLabel") as! SKLabelNode
         
-        healthLabel.text = String(healthCosts)
-
+        costsLabel.text = String(costs)
         backButton.selectedHandler = {
             
             let skView = self.view as SKView!
@@ -60,32 +60,47 @@ class UpgradeScene: SKScene {
             skView?.presentScene(scene)
         }
         healthButton.selectedHandler = {
-            if player.money >= 50.0 * player.healthUpgrade{
-            player.health += 2
-            player.money -= 50.0 * player.healthUpgrade
-            self.playerMoney = player.money
-            player.healthUpgrade += 1
-            self.healthCosts = 50.0 * player.healthUpgrade
-        }
-            
+            self.buying = "health"
+            self.costs = 500.0 * (player.healthUpgrade + 1 )
+            print("health")
         }
         fazeButton.selectedHandler = {
-            if player.money >= 500.0 * player.fazeUpgrade{
-                player.money -= 500.0
-                player.fazeUpgrade += 1
+            self.buying = "faze"
+            self.costs = 10000.0 * (player.fazeUpgrade + 1 )
+            print("faze")
+        }
+        freezeButton.selectedHandler = {
+            self.buying = "freeze"
+            self.costs = 10000.0 * (player.freezeUpgrade + 1 )
+            print("freeze")
+        }
+        
+        buttonBuy.selectedHandler = {
+            if player.money >= 10000.0 * (player.freezeUpgrade + 1) && self.buying == "freeze"{
+                player.money -= 10000.0 * (player.freezeUpgrade + 1)
+                player.freezeUpgrade += 1
                 self.playerMoney = player.money
+                self.costs = 10000.0 * (player.freezeUpgrade + 1)
 
             }
             
-        }
-        freezeButton.selectedHandler = {
-            if player.money >= 500.0 * player.freezeUpgrade{
-                player.money -= 500.0
-                player.freezeUpgrade += 1
+            if player.money >= 10000.0 * (player.fazeUpgrade + 1)  && self.buying == "faze"{
+                player.money -= 10000.0 * (player.fazeUpgrade + 1)
+                player.fazeUpgrade += 1
                 self.playerMoney = player.money
+                self.costs = 10000.0 * (player.fazeUpgrade + 1)
+                
+            }
+            
+            if player.money >= 500.0 * (player.healthUpgrade + 1) && self.buying == "health"{
+                player.health += 1
+                player.money -= 500.0 * (player.healthUpgrade + 1)
+                self.playerMoney = player.money
+                player.healthUpgrade += 1
+                self.costs = 500.0 * (player.healthUpgrade + 1)
             }
             
         }
     }
-
+    
 }

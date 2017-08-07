@@ -45,5 +45,5 @@ class Player : NSObject, NSCoding  {
 
     }
 }
-var player = Player(money:  0, health: 5)
+var player = Player(money:  10000000, health: 5)
 

@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import Crashlytics
 
 enum gameState {
     case gameOver , gameActive
@@ -88,23 +89,19 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
     }
     var freezeCooldown  = 0.0 {
         didSet {
-            if freezeCooldown <= 0 {
-                freezeCooldown = 0
+            if freezeCooldown <= -1 {
+                freezeCooldown = -1
             }
-            /* Scale health bar between 0.0 -> 1.0 e.g 0 -> 100% */
-            rightLabel.text = String(Int(freezeCooldown))
             
         }
     }
     var fazeCooldown  = 0.0 {
         didSet {
-            if fazeCooldown <= 0 {
-                fazeCooldown = 0
+            if fazeCooldown <= -1 {
+                fazeCooldown = -1
             }
 
-            /* Scale health bar between 0.0 -> 1.0 e.g 0 -> 100% */
-            
-            leftLabel.text = String(Int(fazeCooldown))
+
             
         }
     }
@@ -112,20 +109,21 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
     
     
     func swipeDown(_ sender:UISwipeGestureRecognizer) {
+        gameStart = true
+
+            tutorial2.removeFromParent()
+
+        
         print("swiped down")
         flyDown = true
         flyUp = false
 
     }
     func swipeUp(_ sender:UISwipeGestureRecognizer) {
-        if gameStart == false {
-            gameStart = true
-            tutorial1.removeFromParent()
-            tutorial2.removeFromParent()
-            tutorial3.removeFromParent()
-            
+        gameStart = true
 
-        }
+            tutorial1.removeFromParent()
+
         print("swipeUp")
         flyDown = false
         flyUp = true
@@ -142,6 +140,10 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
     }
     
     func singleTap(_ sender:UITapGestureRecognizer) {
+
+            gameStart = true
+                    tutorial3.removeFromParent()
+
         print("singleTap")
         flyDown = false
         flyUp = false
@@ -153,7 +155,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
         print("swipeLeft")
         if self.fazeCooldown <= 0{
             self.faze()
-            self.fazeCooldown = 5
+            self.fazeCooldown = 10 - player.fazeUpgrade
          }
         
     }
@@ -174,22 +176,6 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
         } else {
             print("There is an issue")
         }
-
-        // retrieving a value for a key
-
-        
-//        let userDefaults = UserDefaults.standard
-//        if player.money > userDefaults.double(forKey:"money"){
-//            userDefaults.set(player.money, forKey: "money")
-//
-//        }
-//        else {
-//            player.money = userDefaults.double(forKey:"money")
-//        }
-//        userDefaults.set(player.money, forKey: "money")
-//        var bob = userDefaults.integer(forKey:"money")
-//        bob += 1000
-//        print(bob)
         hero = childNode(withName: "hero") as! SKSpriteNode
         cameraNode = self.childNode(withName: "cameraNode") as! SKCameraNode
         self.camera = cameraNode
@@ -208,9 +194,9 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
         dragonLayer = childNode(withName: "dragonLayer")
         rocketLayer = childNode(withName: "rocketLayer")
         eggLayer = childNode(withName: "eggLayer")
-        tutorial1 = childNode(withName: "tutorial1") as! SKLabelNode
-        tutorial2 = childNode(withName: "tutorial2") as! SKLabelNode
-        tutorial3 = childNode(withName: "tutorial3") as! SKLabelNode
+        tutorial1 = childNode(withName: "//tutorial1") as! SKLabelNode
+        tutorial2 = childNode(withName: "//tutorial2") as! SKLabelNode
+        tutorial3 = childNode(withName: "//tutorial3") as! SKLabelNode
 
         indicatorSource = childNode(withName: "indicator")
         highScore = childNode(withName: "//highScore") as! SKLabelNode
@@ -219,9 +205,9 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
 
         physicsWorld.contactDelegate = self
         healthLabel.text = String(Int(health))
-        leftLabel.text = String(fazeCooldown)
+//        leftLabel.text = String(fazeCooldown)
         leftLabel.isHidden = true
-        rightLabel.text = String(freezeCooldown)
+//        rightLabel.text = String(freezeCooldown)
         highScore.text = "HighScore : " + String(Int( player.highScore))
         highScore.isHidden = true
         rightLabel.isHidden = true
@@ -297,7 +283,13 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
                 did = true
                 player.money += distance
                 let death = SKAction(named : "Death")!
-                hero.run(death)
+    
+                let wait = SKAction.wait(forDuration: 1)
+                let indicatorDeath = SKAction.run({
+                    self.hero.removeFromParent()
+                })
+                let seq = SKAction.sequence([death , indicatorDeath])
+                hero.run(seq)
 
             }
             buttonRestart.state = .MSButtonNodeStateActive
@@ -313,27 +305,21 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
             self.view?.gestureRecognizers?.removeAll()
             return
         }
-//        if hero.position.y >= 550 {
-//            cameraNode.position.y = 550
-//        }
-//        if cameraNode.position.y <= 500 {
-
-            cameraNode.position = hero.position
-//        }
+        
+        cameraNode.position.y = hero.position.y
+        cameraNode.position.x = hero.position.x + 160
         
         if flyUp == true {
-            //                        hero.physicsBody?.applyForce(CGVector(dx: 70, dy: 650))
-            if (hero.physicsBody?.velocity.dy)! < CGFloat(-250.0) {
-                hero.physicsBody?.velocity.dy = CGFloat(250)
+            if (hero.physicsBody?.velocity.dy)! < CGFloat(-150.0) {
+                hero.physicsBody?.velocity.dy = CGFloat(0)
             }
-            hero.physicsBody?.applyForce(CGVector(dx: 0, dy: 250))
+            hero.physicsBody?.applyForce(CGVector(dx: 0, dy: 150))
         }
         if flyDown == true {
-            //                        hero.physicsBody?.applyForce(CGVector(dx: 120, dy: -750))
-            if (hero.physicsBody?.velocity.dy)! > CGFloat(250.0){
-                hero.physicsBody?.velocity.dy = CGFloat(-250)
+            if (hero.physicsBody?.velocity.dy)! > CGFloat(150.0){
+                hero.physicsBody?.velocity.dy = CGFloat(0)
             }
-            hero.physicsBody?.applyForce(CGVector(dx: 0, dy: -250))
+            hero.physicsBody?.applyForce(CGVector(dx: 0, dy: -150))
         }
         
         if gameStart {
@@ -362,10 +348,11 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
 
 
             }
+            leftLabel.text = String(Int(fazeCooldown + 1))
+            rightLabel.text = String(Int(freezeCooldown + 1))
             fazeCooldown -= 1.0 * fixedDelta
             freezeCooldown -= 1.0 * fixedDelta
-            leftLabel.text = String(Int(fazeCooldown))
-            rightLabel.text = String(Int(freezeCooldown))
+
             
 
             if damageTimer >= 0.65 {
@@ -439,7 +426,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
         dragonLayer.position.x += scrollSpeed * CGFloat(fixedDelta)
 
         
-        if spawnTimer >= 1 - distance * 0.00007  {
+        if spawnTimer >= 1 {
             
             let newObstacle = chocolateSource.copy() as! SKNode
             obstacleLayer.addChild(newObstacle)
@@ -455,7 +442,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
             let newObstacle = eggSource.copy() as! SKNode
             eggLayer.addChild(newObstacle)
             
-            let randomPosition = CGPoint(x: cameraNode.position.x + 600 , y: CGFloat.random(min: cameraNode.position.y - 160 , max: cameraNode.position.y + 360))
+            let randomPosition = CGPoint(x: cameraNode.position.x + 600 , y: CGFloat.random(min: cameraNode.position.y - 360 , max: cameraNode.position.y + 360))
             
             newObstacle.position = self.convert(randomPosition, to: eggLayer)
             eggTimer = 0
@@ -473,13 +460,13 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
 //        }
 
         
-        if deathTimer >= 4 - distance * 0.00050 {
+        if deathTimer >= 4  {
             
-            let randomPosition = CGPoint(x: cameraNode.position.x + 400  , y: CGFloat.random(min: cameraNode.position.y - 160 , max: cameraNode.position.y + 160))
+            let randomPosition = CGPoint(x: cameraNode.position.x + 500  , y: CGFloat.random(min: cameraNode.position.y - 160 , max: cameraNode.position.y + 160))
             let newIndicator = indicatorSource.copy() as! SKNode
             addChild(newIndicator)
             newIndicator.position.y = randomPosition.y
-            newIndicator.position.x = cameraNode.position.x + 200
+            newIndicator.position.x = cameraNode.position.x + 250
             let wait = SKAction.wait(forDuration: 1)
             let indicatorDeath = SKAction.run({
                 newIndicator.removeFromParent()
@@ -500,8 +487,8 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
             eggTimer += 1.00 * fixedDelta
             dragonTimer += 1.00 * fixedDelta
             if scrollSpeed  != 0 {
-                scrollSpeed +=  1.0/60
-        }
+                scrollSpeed +=  1.0/120
+            }
         }
     }
     
@@ -515,12 +502,12 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
         
         
         if nodeA.name == "egg" {
-            distance += 100
             nodeA.run(SKAction.removeFromParent())
+            distance += 100
         }
         if nodeB.name == "egg" {
-            distance += 100
             nodeB.run(SKAction.removeFromParent())
+            distance += 100
 
         }
 //        if nodeA.name == "dragon"{
@@ -608,7 +595,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
                 self.background.run(SKAction.colorize(with: UIColor.white, colorBlendFactor: 1, duration: 0.5))
                 scrollSpeed = oldScrollSpeed
                 print(oldScrollSpeed)
-                freezeCooldown = 5
+                freezeCooldown = 10 - player.freezeUpgrade
             }
             
         }
@@ -633,7 +620,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate , UIGestureRecognizerDelegat
             
             if backgroundPosition.x <= -background.size.width {
                 
-                let newPosition = CGPoint(x: background.size.width - 100, y: backgroundPosition.y)
+                let newPosition = CGPoint(x: background.size.width - 20, y: backgroundPosition.y)
                 
                 background.position = self.convert(newPosition, to: scrollLayer)
             }
