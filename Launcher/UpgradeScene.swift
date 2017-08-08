@@ -49,33 +49,33 @@ class UpgradeScene: SKScene {
         costsLabel = childNode(withName: "costsLabel") as! SKLabelNode
         
         costsLabel.text = String(costs)
-        backButton.selectedHandler = {
+        backButton.selectedHandler = { [unowned self] in
             
             let skView = self.view as SKView!
             
-            let scene = GameScene(fileNamed: "GameScene") as GameScene!
+            let scene = MainMenu(fileNamed: "MainMenu") as MainMenu!
             
             scene?.scaleMode = .aspectFill
             
             skView?.presentScene(scene)
         }
-        healthButton.selectedHandler = {
+        healthButton.selectedHandler = { [unowned self] in
             self.buying = "health"
-            self.costs = 500.0 * (player.healthUpgrade + 1 )
+            self.costs = 1000.0 * (player.healthUpgrade + 1 )
             print("health")
         }
-        fazeButton.selectedHandler = {
+        fazeButton.selectedHandler = { [unowned self] in
             self.buying = "faze"
-            self.costs = 10000.0 * (player.fazeUpgrade + 1 )
+            self.costs = 5000.0 * (player.fazeUpgrade + 1 )
             print("faze")
         }
-        freezeButton.selectedHandler = {
+        freezeButton.selectedHandler = { [unowned self] in
             self.buying = "freeze"
             self.costs = 10000.0 * (player.freezeUpgrade + 1 )
             print("freeze")
         }
         
-        buttonBuy.selectedHandler = {
+        buttonBuy.selectedHandler = { [unowned self] in
             if player.money >= 10000.0 * (player.freezeUpgrade + 1) && self.buying == "freeze"{
                 player.money -= 10000.0 * (player.freezeUpgrade + 1)
                 player.freezeUpgrade += 1
@@ -84,11 +84,11 @@ class UpgradeScene: SKScene {
 
             }
             
-            if player.money >= 10000.0 * (player.fazeUpgrade + 1)  && self.buying == "faze"{
-                player.money -= 10000.0 * (player.fazeUpgrade + 1)
+            if player.money >= 5000.0 * (player.fazeUpgrade + 1)  && self.buying == "faze"{
+                player.money -= 5000.0 * (player.fazeUpgrade + 1)
                 player.fazeUpgrade += 1
                 self.playerMoney = player.money
-                self.costs = 10000.0 * (player.fazeUpgrade + 1)
+                self.costs = 5000.0 * (player.fazeUpgrade + 1)
                 
             }
             
@@ -97,7 +97,7 @@ class UpgradeScene: SKScene {
                 player.money -= 500.0 * (player.healthUpgrade + 1)
                 self.playerMoney = player.money
                 player.healthUpgrade += 1
-                self.costs = 500.0 * (player.healthUpgrade + 1)
+                self.costs = 5000.0 * (player.healthUpgrade + 1)
             }
             
         }
